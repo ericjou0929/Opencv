@@ -42,6 +42,8 @@ while True:
     # 在臉部周圍畫矩形框
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 0, 255), 5)  # 注意：(0, 255, 0) 是 BGR
+        # 繪文字
+        cv2.putText(frame, 'Vincent', (x, y - 7), 16, 1.2, (0, 255, 0), 2)
 
     # 將 frame 顯示
     cv2.imshow('Detect face', frame)
@@ -49,9 +51,3 @@ while True:
     # 按下 q 離開迴圈 (「1」表示停 1ms 來偵測是否使用者有按下q。若設定為「0」就表示持續等待至使用者按下按鍵為止)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-
-
-
-# 釋放資源與關閉視窗
-cap.release()
-cv2.destroyAllWindows()
